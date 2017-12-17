@@ -1,0 +1,135 @@
+$body:#0Ad;
+$square:#fff;
+$pos:relative; //relative = center
+$top: 20px; //works when pos = absolute
+$left: 40px; //works when pos = absolute
+$col1:#90F;
+$col2:#0dd;
+$col3:#dd0;
+$col4:#F0a;
+$snake-width:20px;
+$box-size:200px;
+body {
+	background: $body;
+	text-align: center;
+	line-height: 97vh;
+}
+
+.bigSqr {
+	position: $pos;
+	top: $top;
+	left: $left;
+	display: inline-block;
+	width: $box-size;
+	height: $box-size;
+	border-radius: 1px;
+	background: $square;
+}
+
+.span {
+	position: absolute;
+	z-index: 999;
+	border-radius: 1px;
+	animation: sp1 3s linear infinite;
+}
+
+
+/*ANIMATION*/
+
+@mixin mix($w, $h, $t, $l, $b) {
+	width: $w;
+	height: $h;
+	top: $t;
+	left: $l;
+	background: $b;
+}
+
+@keyframes sp1 {
+	0% {
+		@include mix ($snake-width, $snake-width, 0, ($box-size - $snake-width)/2, $col1);
+	}
+	5% {
+		width: $snake-width;
+		height: $box-size;
+		top: 0px;
+		left: ($box-size - $snake-width)/2;
+		background: $col1
+	}
+	18% {
+		width: $snake-width;
+		height: $snake-width;
+		top: $box-size - $snake-width;
+		left: ($box-size - $snake-width)/2;
+		background: $col1
+	}
+	23% {
+		width: $box-size/2;
+		height: $snake-width;
+		top: $box-size - $snake-width;
+		left: 0px;
+		background: $col2
+	}
+	34% {
+		width: $snake-width;
+		height: $snake-width;
+		top: $box-size - $snake-width;
+		left: 0px;
+		background: $col2
+	}
+	39% {
+		width: $snake-width;
+		height: $box-size/2;
+		top: ($box-size - $snake-width)/2;
+		left: 0px;
+		background: $col2
+	}
+	50% {
+		width: $snake-width;
+		height: $snake-width;
+		top: ($box-size - $snake-width)/2;
+		left: 0px;
+		background: $col3
+	}
+	55% {
+		width: $box-size;
+		height: $snake-width;
+		top: ($box-size - $snake-width)/2;
+		left: 0px;
+		background: $col3
+	}
+	68% {
+		width: $snake-width;
+		height: $snake-width;
+		top: ($box-size - $snake-width)/2;
+		left: $box-size - $snake-width;
+		background: $col3
+	}
+	73% {
+		width: $snake-width;
+		height: $box-size/2;
+		top: 0px;
+		left: $box-size - $snake-width;
+		background: $col4
+	}
+	84% {
+		width: $snake-width;
+		height: $snake-width;
+		top: 0px;
+		left: $box-size - $snake-width;
+		background: $col4
+	}
+	89% {
+		width: $box-size/2;
+		height: $snake-width;
+		top: 0px;
+		left: ($box-size - $snake-width)/2;
+		background: $col4
+	}
+	100% {
+		width: $snake-width;
+		height: $snake-width;
+		top: 0px;
+		left: ($box-size - $snake-width)/2;
+		background: $col1
+	}
+}
